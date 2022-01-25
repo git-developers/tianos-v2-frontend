@@ -22,7 +22,7 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
+npm run 
 
 VUEJS
 =======================
@@ -37,4 +37,9 @@ https://www.youtube.com/watch?v=KLv-kC_0C5I
 
 vue create hello-project
 vue update
+npm install --save ant-design-vue
+export NODE_OPTIONS=--openssl-legacy-provider
+
 npm run serve
+
+
