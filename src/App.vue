@@ -3,17 +3,19 @@
         <!--
     <img alt="Vue logo" src="./assets/logo.png">
           -->
-        <HelloWorld msg="Tianos" />
+        <prueba msg="Tianos" />
     </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import prueba from './components/prueba'
+//import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    //HelloWorld
+    prueba
   }
 }
 </script>
