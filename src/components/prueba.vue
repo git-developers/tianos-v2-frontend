@@ -1,5 +1,13 @@
 <template>
-  <h1>{{ titulo }}</h1>
+  <div>
+    <table>
+      <tbody>
+        <tr v-for ="todo in todos" :key="todo">
+          <td>{{ todo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -8,7 +16,8 @@ export default {
   name: "prueba",
   data(){
     return{
-      titulo: 'Mañana'
+      titulo: 'Mañana',
+      todos:null
     }
   },
   mounted() {
@@ -22,6 +31,8 @@ export default {
       .get('http://localhost/tianos-v2-backend/public/index.php/tik-tok/list')
       .then(response => {
         console.log('estoes', response)
+        this.todos = response.data.author_signature
+        console.log('Objeto',this.todos.author_signature)
       })
       .catch(e=>console.log('error',e))
     }
