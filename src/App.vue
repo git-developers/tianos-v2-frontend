@@ -2,23 +2,28 @@
     <div id="app">
         <!--
     <img alt="Vue logo" src="./assets/logo.png">
+
           -->
+        <!--<HelloWorld msg="Tianos" />-->
         <prueba msg="Tianos" />
+        <!--//Revisar dónde recibe este props (parámetro)-->
     </div>
 </template>
 
 <script>
-import prueba from './components/prueba'
+//import HelloWorld from './components/HelloWorld.vue'
+import prueba from './components/prueba.vue'
 //import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    //HelloWorld
     prueba
+    //prueba
   }
 }
 </script>
+    HelloWorld
 
 <style>
 
