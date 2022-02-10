@@ -1,6 +1,6 @@
-
+// vue.config.js
 module.exports = {
     devServer: {
-        proxy: 'http://localhost/tianos-v2-backend/'
-    }
-}
+          proxy: 'http://api.gato.com',
+      }
+  }
