@@ -9,19 +9,19 @@
       style="width: 200px"
       @search="onSearch"
     />
-     <a-button type="link" ghost>
-      Cargar
-    </a-button>
-      <tmodal />
+     <tmodalsignup />
+      <tmodalsignin />
     <a-icon type="more" />
   </div>
 </template>
 
 <script>
-import tmodal from "./tmodal.vue";
+import tmodalsignin from "./tmodalsignin.vue";
+import tmodalsignup from "./tmodalsignup.vue";
 export default {
    components: {
-    tmodal,
+    tmodalsignin,
+    tmodalsignup
   },
   name: "tnavbar",
   data() {},

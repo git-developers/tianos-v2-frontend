@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-button type="primary" @click="showModal">
-      Iniciar sesión
+      Sign in
     </a-button>
     <a-modal v-model="visible" @ok="handleOk">
       <!---->
@@ -43,7 +43,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "tmodal",
+  name: "tmodalsignin",
   data() {
     return {
       visible: false,
@@ -63,6 +63,8 @@ export default {
       this.visible = false;
     },
     handleSubmit() {
+
+      /*
       console.log(this.formInline);
       const tuser = {
         username: this.formInline.user,
@@ -71,12 +73,27 @@ export default {
         name: this.formInline.user,
       };
       //console.log(tuser)
+      const headers = {
+        "Acces  Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
+      };
+
+      const axiosInstance = axios.create({
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      });*/
+
+      console.log("http://api.gato.com/tianos-v2-backend/public/index.php/user_api/new?username="+this.formInline.user+"&password=" +this.formInline.password+"&email=" +this.formInline.user+"&name=" +this.formInline.user+"@gato.com");
+      //axiosInstance
       axios
-        .post("http://localhost/tianos-v2-backend/public/index.php/user_api/new", tuser)
+        .get(
+          "http://api.gato.com/tianos-v2-backend/public/index.php/user_api/new?username="+this.formInline.user+"&password=" +this.formInline.password+"&name=" +this.formInline.user+"&email=" +this.formInline.user+"@gato.com")
         .then((response) => {
           console.log("estoes", response);
           this.answer = response.data.id;
-          })
+        })
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);

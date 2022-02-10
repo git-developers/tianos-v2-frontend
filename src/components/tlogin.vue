@@ -1,6 +1,6 @@
 <template>
     <a-card style="width: 200px">
-              <tmodal />
+              <tmodalsignin/>
               <br>
             <p style="text-align: left">
               Inicia sesión para seguir a creadores, dar un me gusta a videos y
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import tmodal from "./tmodal.vue";
+import tmodalsignin from "./tmodalsignin.vue";
 export default {
   name: "tlogin",
   components: {
-    tmodal,
+    tmodalsignin,
   },
   data() {},
   mounted() {},
