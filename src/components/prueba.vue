@@ -11,7 +11,7 @@
           <a-layout>
             <a-layout-sider>
               <tmenu />
-              <tlogin />
+              <tlogin/>
               <div v-for="todo in todos" :key="todo.nickname">
               <tpopover :name="todo.author_nick" :content="todo.author_signature"/>
               </div>
