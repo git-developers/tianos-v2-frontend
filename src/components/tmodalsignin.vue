@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-button type="primary" @click="showModal">
+    <a-button v-if="show" type="primary" @click="showModal">
       Sign in
     </a-button>
     <a-modal v-model="visible" @ok="handleOk">
@@ -37,6 +37,10 @@
       </a-form-model>
       <!---->
     </a-modal>
+
+    <a-button  v-if="!show" type="primary" v-on:click="logout">
+      Logout
+    </a-button>
   </div>
 </template>
 
@@ -44,8 +48,10 @@
 import axios from "axios";
 export default {
   name: "tmodalsignin",
+  props: {},
   data() {
     return {
+      show: true,
       visible: false,
       formInline: {
         user: "",
@@ -63,7 +69,6 @@ export default {
       this.visible = false;
     },
     handleSubmit() {
-
       /*
       console.log(this.formInline);
       const tuser = {
@@ -85,22 +90,42 @@ export default {
         }
       });*/
 
-      console.log("http://api.gato.com/tianos-v2-backend/public/index.php/user_api/new?username="+this.formInline.user+"&password=" +this.formInline.password+"&email=" +this.formInline.user+"&name=" +this.formInline.user+"@gato.com");
+      /*console.log(
+        "http://api.gato.com/tianos-v2-backend/public/index.php/login?username=" +
+          this.formInline.user +
+          "@gato.com&password=" +
+          this.formInline.password
+      );*/
       //axiosInstance
+      let data = JSON.stringify({
+        username: this.formInline.user + "@gato.com",
+        password: this.formInline.password,
+      });
+
+      console.log(data);
       axios
-        .get(
-          "http://api.gato.com/tianos-v2-backend/public/index.php/user_api/new?username="+this.formInline.user+"&password=" +this.formInline.password+"&name=" +this.formInline.user+"&email=" +this.formInline.user+"@gato.com")
+        .post(
+          "http://api.gato.com/tianos-v2-backend/public/index.php/login",
+          data
+        )
         .then((response) => {
-          console.log("estoes", response);
+          console.log(response.data.status);
           this.answer = response.data.id;
+          if (response.data.status == "logged") {
+            this.show = false;
+          }
         })
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
         });
     },
+
+    logout(){
+      console.log("data");
+      this.show = true;
+    }
   },
-  props: {},
 };
 </script>
 
