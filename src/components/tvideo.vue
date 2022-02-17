@@ -13,36 +13,7 @@
       </div>
 
       <!--/////-->
-      <div>
-        <a-button type="link" @click="showModal">
-          <video
-            controls="true"
-            autoplay="true"
-            :src="src"
-            style="width:300px"
-          />
-        </a-button>
-        
-        <a-modal v-model="visible" @ok="handleOk">
-          <div class="container">
-          <video
-            controls="true"
-            autoplay="true"
-            :src="src"
-            style="width:300px"
-          />
-          <!--<p>Some contents...</p>-->
-          <div  class="container2">
-            <a-avatar size="large" icon="user" />
-            <a>{{ name }}</a>
-            <a-button type="primary">
-              Seguir
-            </a-button>
-          </div>
-          </div>
-        </a-modal>
-        
-      </div>
+      <tmodalvideo :name="name" :src="src"/>
       <!--/////-->
 
       <!--<video controls="true" autoplay="true" :src="src" style="width:300px" />-->
@@ -56,7 +27,9 @@
 </template>
 
 <script>
+import tmodalvideo from './tmodalvideo.vue';
 export default {
+  components: { tmodalvideo },
   name: "tvideo",
   data() {
     return {
