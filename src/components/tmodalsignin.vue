@@ -106,27 +106,27 @@ export default {
       });
       console.log("=========")
       console.dir(window);
-      axios
-        .post(
-          "http://api.gato.com/tianos-v2-backend/public/index.php/login",
-          data
-        )
-        .then((response) => {
-          console.log(response.data.status);
-          this.answer = response.data.id;
-          //if (response.data.status == Util.status_success) {
-          if (response.data.status == "1") {
-            this.show = false;
+        axios
+          .post(
+            "http://api.gato.com/tianos-v2-backend/public/index.php/login",
+            data
+          )
+          .then((response) => {
+            console.log(response.data.status);
+            this.answer = response.data.id;
+            //if (response.data.status == Util.status_success) {
+            if (response.data.status == "1") {
+              this.show = false;
 
-            
-            localStorage.setItem("username", this.formInline.user);
-            //this.$session.set('token', 152t2tw6wy2);
-          }
-        })
-        .catch((error) => {
-          this.errorMessage = error.message;
-          console.error("There was an error!", error);
-        });
+              
+              localStorage.setItem("username", this.formInline.user);
+              //this.$session.set('token', 152t2tw6wy2);
+            }
+          })
+          .catch((error) => {
+            this.errorMessage = error.message;
+            console.error("There was an error!", error);
+          });
     },
 
     logout(){
