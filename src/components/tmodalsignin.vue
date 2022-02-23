@@ -59,7 +59,10 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+    //this.$session.start();
+
+  },
   methods: {
     showModal() {
       this.visible = true;
@@ -98,32 +101,61 @@ export default {
       );*/
       //axiosInstance
       let data = JSON.stringify({
-        username: this.formInline.user + "@gato.com",
+        username: this.formInline.user,
         password: this.formInline.password,
       });
+      console.log("=========")
+      console.dir(window);
+        axios
+          .post(
+            "http://api.gato.com/tianos-v2-backend/public/index.php/login",
+            data
+          )
+          .then((response) => {
+            console.log(response.data.status);
+            this.answer = response.data.id;
+            //if (response.data.status == Util.status_success) {
+            if (response.data.status == "1") {
+              this.show = false;
 
-      console.log(data);
-      axios
-        .post(
-          "http://api.gato.com/tianos-v2-backend/public/index.php/login",
-          data
-        )
-        .then((response) => {
-          console.log(response.data.status);
-          this.answer = response.data.id;
-          if (response.data.status == "logged") {
-            this.show = false;
-          }
-        })
-        .catch((error) => {
-          this.errorMessage = error.message;
-          console.error("There was an error!", error);
-        });
+              
+              localStorage.setItem("username", this.formInline.user);
+              //this.$session.set('token', 152t2tw6wy2);
+            }
+          })
+          .catch((error) => {
+            this.errorMessage = error.message;
+            console.error("There was an error!", error);
+          });
     },
 
     logout(){
       console.log("data");
       this.show = true;
+
+      console.log("logout");
+      console.log(localStorage);
+      console.log("SESSION ::: " + localStorage.getItem("username"))
+
+      localStorage.removeItem("username");
+       console.log("=========");
+        console.log(localStorage);
+
+      /*
+      axios
+        .get(
+          "http://api.gato.com/tianos-v2-backend/public/index.php/logout")
+        .then((response) => {
+
+          
+          console.log("estoes", response);
+          this.answer = response.data.id;
+        })
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
+        */
     }
   },
 };
