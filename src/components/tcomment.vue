@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow-x:scroll; height:200px">
     <a-list
       v-if="comments.length"
       :data-source="comments"
@@ -114,7 +114,7 @@ export default {
   created() {
     axios
       .get(
-        "http://localhost/tianos-v2-backend/public/index.php/comment_api/comments"
+        "http://localhost/tianos-v2-backend/public/index.php/api/comment/comments"
       )
       .then((response) => {
         this.todos = response.data.items;
