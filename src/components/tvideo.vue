@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-card>
+    <a-card style="background: #f4f4f4;">
       <div>
         <a-avatar size="large" icon="user" />
         <a>{{ name }}</a>
@@ -62,6 +62,7 @@ export default {
   align-items: center;
   grid-column-gap: 0px;
   grid-template-columns: 4fr 4fr;
+  
 }
 
 .container2 {

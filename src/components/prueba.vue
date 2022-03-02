@@ -94,13 +94,13 @@ export default {
   line-height: 1.5;
 }
 #components-layout-demo-basic .ant-layout-sider {
-  background: #3ba0e9;
+  background: #343434;
   color: #fff;
   line-height: 120px;
   border: solid 4px black;
 }
 #components-layout-demo-basic .ant-layout-content {
-  background: rgba(16, 142, 233, 1);
+  background: #343434;
   border: solid 4px black;
   color: #fff;
   min-height: 120px;
@@ -116,5 +116,6 @@ export default {
 #components-layout-demo-basic .ant-layout-header{
   padding: 0;
 }
+
 </style>
 
